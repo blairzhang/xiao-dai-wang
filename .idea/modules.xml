@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/xdw-common/xdw-common.iml" filepath="$PROJECT_DIR$/xdw-common/xdw-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xdw-config/xdw-config.iml" filepath="$PROJECT_DIR$/xdw-config/xdw-config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xdw-core/xdw-core.iml" filepath="$PROJECT_DIR$/xdw-core/xdw-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xdw-mapper/xdw-mapper.iml" filepath="$PROJECT_DIR$/xdw-mapper/xdw-mapper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xdw-pc/xdw-pc.iml" filepath="$PROJECT_DIR$/xdw-pc/xdw-pc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xdw-pojo/xdw-pojo.iml" filepath="$PROJECT_DIR$/xdw-pojo/xdw-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xiao-dai-wang.iml" filepath="$PROJECT_DIR$/xiao-dai-wang.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="xdw-common" />
+        <module name="xdw-config" />
+        <module name="xdw-core" />
+        <module name="xdw-mapper" />
+        <module name="xdw-pc" />
+        <module name="xdw-pojo" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="xdw-common" target="1.8" />
+      <module name="xdw-config" target="1.8" />
+      <module name="xdw-core" target="1.8" />
+      <module name="xdw-mapper" target="1.8" />
+      <module name="xdw-pc" target="1.8" />
+      <module name="xdw-pojo" target="1.8" />
+      <module name="xiao-dai-wang" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
