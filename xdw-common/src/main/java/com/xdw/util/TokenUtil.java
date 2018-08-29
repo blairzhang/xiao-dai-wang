@@ -1,6 +1,6 @@
 package com.xdw.util;
 
-import com.xdw.UserRegist;
+import com.xdw.entity.UserRegist;
 
 import java.util.Date;
 import java.util.HashMap;

@@ -1,6 +1,6 @@
 package com.xdw.controller.userController;
 
-import com.xdw.UserRegist;
+import com.xdw.entity.UserRegist;
 import com.xdw.service.UserRegistService;
 import com.xdw.util.JsonView;
 import com.xdw.util.MD5Util;
@@ -58,7 +58,7 @@ public class UserController {
                 userRegist.setPassword(MD5Util.MD5(userRegist.getPassword()));
             }
             UserRegist login = userRegistService.login(userRegist);
-            if(login.getISLogin()==1){
+            if(login.getISLogin()!=null &&login.getISLogin()==1){
                 jsonView.setMessage("您已经登陆");
             }else{
                 userRegist.setISLogin(1);
@@ -86,15 +86,21 @@ public class UserController {
      * @param request
      * @return
      */
-   /* public JsonView toQuit(UserRegist userRegist,HttpServletRequest request){
+    @RequestMapping("/toQuit")
+    public JsonView toQuit(UserRegist userRegist,HttpServletRequest request){
         JsonView jsonView = new JsonView();
         try{
             userRegist.setUpdateTime(new Date());
             userRegist.setISLogin(0);
             Integer i = userRegistService.updateUserInfo(userRegist);
-
             if(i>0){
-
+                //把用户信息congsession中移除
+                request.getSession().removeAttribute(userRegist.getUserName());
+                jsonView.setMessage("退出成功");
+                jsonView.setCode(JsonView.SUCCESS);
+            }else{
+                jsonView.setCode(JsonView.ERROR);
+                jsonView.setMessage("退出失败");
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -102,5 +108,5 @@ public class UserController {
             jsonView.setMessage("退出异常");
         }
         return jsonView;
-    }*/
+    }
 }

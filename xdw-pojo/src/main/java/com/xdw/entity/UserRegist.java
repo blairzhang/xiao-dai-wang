@@ -1,4 +1,4 @@
-package com.xdw;
+package com.xdw.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

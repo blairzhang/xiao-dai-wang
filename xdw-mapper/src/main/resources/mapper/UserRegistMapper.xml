@@ -3,17 +3,17 @@
 <mapper namespace="com.xdw.dao.UserRegistDao">
 
     <!--用户注册-->
-    <insert id="insertUserRegist" parameterType="com.xdw.UserRegist">
+    <insert id="insertUserRegist" parameterType="com.xdw.entity.UserRegist">
         insert into user_regist(userName,password,createTime)values(#{userName},#{password},#{createTime})
     </insert>
 
     <!--用户登陆，验证用户信息-->
-    <select id="login" parameterType="com.xdw.UserRegist" resultType="com.xdw.UserRegist">
+    <select id="login" parameterType="com.xdw.entity.UserRegist" resultType="com.xdw.entity.UserRegist">
         select * from  user_regist where userName = #{userName} and password = #{password}
     </select>
 
     <!--修改-->
-    <update id="updateUserInfo" parameterType="com.xdw.UserRegist">
+    <update id="updateUserInfo" parameterType="com.xdw.entity.UserRegist">
         update user_regist SET
         <if test="userName!=null and userName!=''">
             userName = #{userName},

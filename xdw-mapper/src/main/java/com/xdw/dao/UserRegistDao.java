@@ -1,6 +1,6 @@
 package com.xdw.dao;
 
-import com.xdw.UserRegist;
+import com.xdw.entity.UserRegist;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

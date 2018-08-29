@@ -1,6 +1,6 @@
 package com.xdw.service;
 
-import com.xdw.UserRegist;
+import com.xdw.entity.UserRegist;
 
 public interface UserRegistService {
 
