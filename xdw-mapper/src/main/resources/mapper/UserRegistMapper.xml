@@ -7,4 +7,25 @@
         insert into user_regist(userName,password,createTime)values(#{userName},#{password},#{createTime})
     </insert>
 
+    <!--用户登陆，验证用户信息-->
+    <select id="login" parameterType="com.xdw.UserRegist" resultType="com.xdw.UserRegist">
+        select * from  user_regist where userName = #{userName} and password = #{password}
+    </select>
+
+    <!--修改-->
+    <update id="updateUserInfo" parameterType="com.xdw.UserRegist">
+        update user_regist SET
+        <if test="userName!=null and userName!=''">
+            userName = #{userName},
+        </if>
+        <if test="password!=null and password!=''">
+            password = #{password},
+        </if>
+        <if test="ISLogin!=null">
+            ISLogin = #{ISLogin},
+        </if>
+        <if test="updateTime!=null">
+            updateTime = #{updateTime}
+        </if>
+    </update>
 </mapper>

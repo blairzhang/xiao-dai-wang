@@ -7,4 +7,8 @@ import org.apache.ibatis.annotations.Mapper;
 public interface UserRegistDao {
 
     public Integer insertUserRegist(UserRegist userRegist);
+
+    public UserRegist login(UserRegist userRegist);
+
+    public Integer updateUserInfo(UserRegist userRegist);
 }

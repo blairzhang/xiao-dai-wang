@@ -15,6 +15,7 @@ public class UserRegist implements Serializable {
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date updateTime;
     private Integer status;
+    private Integer ISLogin;
 
     public Long getId() {
         return id;
@@ -62,5 +63,13 @@ public class UserRegist implements Serializable {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getISLogin() {
+        return ISLogin;
+    }
+
+    public void setISLogin(Integer ISLogin) {
+        this.ISLogin = ISLogin;
     }
 }

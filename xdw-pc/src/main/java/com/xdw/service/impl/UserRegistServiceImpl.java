@@ -3,11 +3,14 @@ package com.xdw.service.impl;
 import com.xdw.UserRegist;
 import com.xdw.dao.UserRegistDao;
 import com.xdw.service.UserRegistService;
+import com.xdw.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Date;
 
 @Service
 public class UserRegistServiceImpl implements UserRegistService {
@@ -24,5 +27,26 @@ public class UserRegistServiceImpl implements UserRegistService {
     @Override
     public Integer insertUserRegist(UserRegist userRegist) {
         return userRegistDao.insertUserRegist(userRegist);
+    }
+
+    /**
+     * 用户登陆
+     * @param userRegist
+     * @return
+     */
+    @Override
+    public UserRegist login(UserRegist userRegist) {
+        return userRegistDao.login(userRegist);
+    }
+
+    /**
+     * 修改
+     * @param userRegist
+     * @return
+     */
+    @Override
+    public Integer updateUserInfo(UserRegist userRegist) {
+        Integer i = userRegistDao.updateUserInfo(userRegist);
+        return i;
     }
 }
