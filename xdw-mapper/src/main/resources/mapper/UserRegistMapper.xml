@@ -13,7 +13,17 @@
 
     <!--用户登陆，验证用户信息-->
     <select id="login" parameterType="com.xdw.entity.UserRegist" resultType="com.xdw.entity.UserRegist">
-        select * from  user_regist where userName = #{userName} and password = #{password}
+        select * from  user_regist where 1=1
+        <if test="userName !=null and userName!=''">
+            and userName = #{userName}
+        </if>
+        <if test="password!=null and password!=''">
+            and password = #{password}
+        </if>
+        <if test="id !=null">
+            and id = #{id}
+        </if>
+
     </select>
 
     <!--修改-->
@@ -28,15 +38,43 @@
         <if test="ISLogin!=null">
             ISLogin = #{ISLogin},
         </if>
+        <if test="status!=null">
+            status = #{status},
+        </if>
         <if test="updateTime!=null">
             updateTime = #{updateTime}
         </if>
-        where id = #{id}
+        where 1=1
+        <if test="id!=null">
+            and id = #{id}
+        </if>
+        <if test="userName!=null and userName!=''">
+            and userName = #{userName}
+        </if>
     </update>
 
     <!--根据id查询用户信息-->
     <select id="selectUserById" parameterType="Long" resultType="com.xdw.entity.UserRegist">
         select * from user_regist where id = #{id}
     </select>
-    <!---->
+
+    <!--查询用户信息-->
+    <select id="selectUserByPage" parameterType="java.util.Map" resultType="com.xdw.vo.UserVo">
+        select ur.*,ul.city from user_regist ur
+        left join user_loan ul on ul.userId = ur.id
+        where 1=1
+        <if test="userName!=null and userName!=''">
+            and ur.userName = #{userName}
+        </if>
+        <if test="startTime!=null and endTime==null">
+            ur.createTime &gt;= #{startTime}
+        </if>
+        <if test="endTime!=null and startTime==null">
+            ur.createTime &lt;= #{endTime}
+        </if>
+        <if test="startTime!=null and endTime !=null">
+            ur.createTime BETWEEN #{startTime} AND #{endTime}
+        </if>
+        and ur.status = 1
+    </select>
 </mapper>

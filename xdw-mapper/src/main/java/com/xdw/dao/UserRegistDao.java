@@ -1,7 +1,11 @@
 package com.xdw.dao;
 
 import com.xdw.entity.UserRegist;
+import com.xdw.vo.UserVo;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface UserRegistDao {
@@ -16,4 +20,7 @@ public interface UserRegistDao {
     public Integer updateUserInfo(UserRegist userRegist);
 
     public UserRegist selectUserById(Long id);
+
+    //分页查询所有的用户信息
+    public List<UserVo> selectUserByPage(Map map);
 }
