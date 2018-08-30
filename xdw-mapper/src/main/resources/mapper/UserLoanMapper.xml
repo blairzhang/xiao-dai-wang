@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xdw.dao.UserLoanDao">
+    <!--贷款申请-->
+    <insert id="insertUserLoanInfo" useGeneratedKeys="true" keyProperty="id" parameterType="com.xdw.entity.UserLoan">
+        INSERT INTO user_loan (userId,actualName,idCard,idCardPicZ,idCardPicF,loanMoney,loanLX,city,phone,propertyInfo,createTime,updateTime,causeBy,status)
+        VALUES (#{userId},#{actualName},#{idCard}, #{idCardPicZ}, #{idCardPicF}, #{loanMoney}, #{loanLX}, #{city}, #{phone}, #{propertyInfo}, #{createTime}, #{updateTime}, #{causeBy}, #{status});
+    </insert>
+    <!--按用户ID查询所有贷款申请-->
+    <select id="selectUserLoanByUserId" parameterType="java.lang.Long" resultType="com.xdw.entity.UserLoan">
+        SELECT * FROM user_loan WHERE userId = #{userId} ORDER BY createTime
+    </select>
+    <!--按ID查询贷款申请-->
+    <select id="selectUserLoanById" parameterType="java.lang.Long" resultType="com.xdw.entity.UserLoan">
+        SELECT * FROM user_loan WHERE id = #{id}
+    </select>
+    <!--按条件查询所有贷款信息-->
+    <select id="selectUserLoanAll" parameterType="java.lang.Long" resultType="com.xdw.entity.UserLoan">
+        SELECT * FROM user_loan
+        <where>
+            1=1
+            <if test="phone != null and phone != ''">
+                AND phone = #{phone}
+            </if>
+            <if test="startTime != null and startTime == null">
+                AND createTime &gt;= #{startTime}
+            </if>
+            <if test="startTime == null and endTime != null">
+                AND createTime &lt;= #{endTime}
+            </if>
+            <if test="startTime != null and endTime != null">
+                AND createTime BETWEEN #{startTime} AND #{endTime}
+            </if>
+            <if test="status != null">
+                AND status = #{status}
+            </if>
+        </where>
+        ORDER BY createTime
+    </select>
+
+    <!--审核贷款信息-->
+    <update id="updateUserLoanInfoById" parameterType="com.xdw.entity.UserLoan">
+        UPDATE user_loan
+        SET causeBy = #{causeBy},updateTime = #{updateTime},status = #{status}
+        WHERE id = #{id}
+    </update>
+</mapper>

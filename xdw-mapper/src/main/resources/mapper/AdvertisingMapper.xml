@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xdw.dao.AdvertisingDao">
+    <!--添加banner图-->
+    <insert id="insertAdvertising" useGeneratedKeys="true" keyProperty="id" parameterType="com.xdw.entity.Advertising">
+        INSERT INTO advertising (advertisingName,advertisingURL,advertisingPic,createTime,updateTime,status)
+        VALUES ( #{advertisingName}, #{advertisingURL}, #{advertisingPic}, #{createTime}, #{updateTime}, #{status});
+    </insert>
+    <!--根据id查看banner图-->
+    <select id="selectAdvertisingById" parameterType="java.lang.Long" resultType="com.xdw.entity.Advertising">
+        SELECT * advertising WHERE id = #{advertising}
+    </select>
+    <!--查看所有banner图-->
+    <select id="selectAdvertisingAll" resultType="com.xdw.entity.Advertising">
+        SELECT * FROM advertising ORDER BY createTime
+    </select>
+    <!--修改banner图-->
+    <update id="updateAdvertising" parameterType="com.xdw.entity.Advertising">
+        UPDATE advertising
+        <set>
+            <if test="advertisingName != null and advertisingName = ''">
+                advertisingName = #{advertisingName},
+            </if>
+            <if test="advertisingURL != null and advertisingURL = ''">
+                advertisingURL = #{advertisingURL},
+            </if>
+            <if test="advertisingPic != null and advertisingPic = ''">
+                advertisingPic = #{advertisingPic},
+            </if>
+            <if test="status != null and status = ''">
+                status = #{status},
+            </if>
+            <if test="updateTime != null and updateTime = ''">
+                updateTime = #{updateTime}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+    <!--删除banner图-->
+    <delete id="deleteAdvertising" parameterType="java.lang.Long">
+        DELETE advertising WHERE id = #{id}
+    </delete>
+</mapper>
