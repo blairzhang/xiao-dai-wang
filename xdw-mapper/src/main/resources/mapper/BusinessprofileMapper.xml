@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xdw.dao.BusinessprofileDao">
+
+    <!--后台添加企业简介数据-->
+    <insert id="insertBusinessprofile" parameterType="java.util.Map" >
+        INSERT INTO businessprofile (businessProfile,createTime)VALUES(#{businessProfile},#{createTime})
+    </insert>
+    <!-- pc端查询企业简介数据-->
+    <select id="selectBusinessprofile" parameterType="int" resultType="com.xdw.entity.Businessprofile">
+        select * from businessprofile WHERE status=#{status}
+    </select>
+</mapper>
