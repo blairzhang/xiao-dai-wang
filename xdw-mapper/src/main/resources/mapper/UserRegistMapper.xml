@@ -2,6 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xdw.dao.UserRegistDao">
 
+    <!--查看用户的账号是否已经注册-->
+    <select id="selectUserByUserName" parameterType="com.xdw.entity.UserRegist" resultType="com.xdw.entity.UserRegist">
+        select * from user_regist where userName = #{userName}
+    </select>
     <!--用户注册-->
     <insert id="insertUserRegist" parameterType="com.xdw.entity.UserRegist">
         insert into user_regist(userName,password,createTime)values(#{userName},#{password},#{createTime})
@@ -27,5 +31,12 @@
         <if test="updateTime!=null">
             updateTime = #{updateTime}
         </if>
+        where id = #{id}
     </update>
+
+    <!--根据id查询用户信息-->
+    <select id="selectUserById" parameterType="Long" resultType="com.xdw.entity.UserRegist">
+        select * from user_regist where id = #{id}
+    </select>
+    <!---->
 </mapper>
