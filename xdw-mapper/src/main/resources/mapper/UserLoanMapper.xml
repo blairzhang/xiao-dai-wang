@@ -15,7 +15,7 @@
         SELECT * FROM user_loan WHERE id = #{id}
     </select>
     <!--按条件查询所有贷款信息-->
-    <select id="selectUserLoanById" parameterType="java.lang.Long" resultType="com.xdw.entity.UserLoan">
+    <select id="selectUserLoanAll" parameterType="java.lang.Long" resultType="com.xdw.entity.UserLoan">
         SELECT * FROM user_loan
         <where>
             1=1

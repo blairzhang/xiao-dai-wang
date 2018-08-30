@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xdw.entity.UserLoan;
 import com.xdw.service.UserLoanService;
+import com.xdw.service.UserRegistService;
 import com.xdw.util.JsonView;
 import com.xdw.util.PageRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,8 @@ public class UserLoanController {
     @Autowired
     private UserLoanService userLoanService;
 
+    @Autowired
+    private UserRegistService userRegistService;
     /**
      * 贷款申请
      * @param userLoan
@@ -35,7 +38,10 @@ public class UserLoanController {
     @RequestMapping(value = "/insertUserLoanInfo",method = RequestMethod.POST)
     public JsonView insertUserLoanInfo(UserLoan userLoan){
         JsonView jsonView = new JsonView();
+
         try {
+
+
             int i = userLoanService.insertUserLoanInfo(userLoan);
             if (i<=0){
                 jsonView.setMessage("申请贷款失败!");
